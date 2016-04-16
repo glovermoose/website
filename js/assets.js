@@ -27,8 +27,11 @@ var Input = {
     keybaord_space: false,
 }; // Input variables
 
+
+
 var Images = {
     startButton: new Image(),
+    icon: new Image(),
     optionsButton: new Image(),
     mysteryButtton: new Image(),
 }; // image pointers
@@ -36,6 +39,8 @@ var Images = {
     Images.startButton.src = 'images/Start_Button.png';
     Images.startButton.myx = Room.width / 2;
     Images.startButton.myy = 150;
+
+   // Images.igon.src = 'images/ICON.png';
 
     Images.optionsButton.src = 'images/Options_Button.png';
     Images.optionsButton.myx = Room.width / 2;

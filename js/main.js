@@ -1,10 +1,22 @@
-﻿
+﻿/*=============================================
+-----------------------------------
+Copyright (c) 2016 Daniel Welsh
+-----------------------------------
+@file: main.js
+@date: 16/04/2016
+@author: Daniel Welsh
+@brief: The main.js
+===============================================*/
+
+var loop = function () { }; /// create deligate to swap between menu loop and game loop depending on clicks
 function GameLoop()
 {
-
+    CONTEXT.save();
+    CONTEXT.fillRect(0, 0, Room.width, Room.height);
+    CONTEXT.restore();
 }
 
-function MenuLoop()
+loop = function()
 {
     if (Images.startButton.complete)
     {
@@ -25,7 +37,7 @@ function MenuLoop()
     {
         if (InRect(Input.mouse_x, Input.mouse_y, Images.startButton.myx, Images.startButton.myy, Images.startButton.myx + Images.startButton.width, Images.startButton.myy + Images.startButton.height))
         {
-            console.log("click");
+            loop = GameLoop();
         }
     }
     ///////
@@ -42,7 +54,7 @@ setInterval(function ()
     document.getElementById("deltaTime").innerHTML = "fps: " + Time.deltaTime * 1000;
     document.getElementById("mousex").innerHTML = "x: " + Input.mouse_x;
     document.getElementById("mousey").innerHTML = "Y: " + Input.mouse_y;
-    MenuLoop();
+    loop();
 }
 , 1000 / Time.FPS)
 
