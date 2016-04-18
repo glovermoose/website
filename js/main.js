@@ -43,31 +43,35 @@ var loop = function () { }; /// create deligate to swap between menu loop and ga
 function GameLoop()
 {
     tickTimer += Time.deltaTime;
-    if (tickTimer>=tickSpeed)
+    if (tickTimer >= tickSpeed)
     {
         tickTimer = 0;
         tick = true;
     }
     DrawFillRect(0, 0, Room.width, Room.height, "white")
 
-  
+
     for (var i = 0; i < objects.length; i++)
     {
-        //  objects[i].Update();
-        head.Update();
-        //objects[i].Draw();
-        head.Draw();
+        objects[i].Update();
+        fruit.Update();
+        //head.Update();
+        //body.Update();
+        objects[i].Draw();
+        fruit.Draw();
+        //head.Draw();
+        //body.Draw();
     }
 
     tick = false;
 }
 
-loop = function()
+loop = function ()
 {
     if (Images.startButton.complete)
     {
-      //  Images.startButton.myx -= Images.startButton.width / 2;
-        CONTEXT.drawImage(Images.startButton, Images.startButton.myx , Images.startButton.myy );
+        //  Images.startButton.myx -= Images.startButton.width / 2;
+        CONTEXT.drawImage(Images.startButton, Images.startButton.myx, Images.startButton.myy);
     }
 
     if (Images.optionsButton.complete)
@@ -82,14 +86,14 @@ loop = function()
 
     if (Input.mouse_left)
     {
-        if (InRect(Input.mouse_x,Input.mouse_y,Images.startButton.myx,Images.startButton.myy,Images.startButton.width,Images.startButton.height))
+        if (InRect(Input.mouse_x, Input.mouse_y, Images.startButton.myx, Images.startButton.myy, Images.startButton.width, Images.startButton.height))
         {
             loop = GameLoop;
         }
     }
     ///////
     CONTEXT.beginPath();
-    CONTEXT.rect(Images.startButton.myx , Images.startButton.myy , Images.startButton.width, Images.startButton.height);
+    CONTEXT.rect(Images.startButton.myx, Images.startButton.myy, Images.startButton.width, Images.startButton.height);
     CONTEXT.stroke();
     CONTEXT.closePath();
     ///////
@@ -98,10 +102,10 @@ loop = function()
 setInterval(function ()
 {
     GetDealtaTime();
-    document.getElementById("left").innerHTML = "left: " + Input.keyboard_left;
-    document.getElementById("down").innerHTML = "down: " + Input.keyboard_down;
-    document.getElementById("right").innerHTML = "right: " + Input.keyboard_right;
-    document.getElementById("up").innerHTML = "up: " + Input.keyboard_up;
+    document.getElementById("left").innerHTML = "x: " + head.positionx;
+    document.getElementById("down").innerHTML = "y: " + head.positiony;
+    document.getElementById("up").innerHTML = "fruit.x: " + fruit.positionx;
+    document.getElementById("right").innerHTML = "right: " + fruit.positiony;
     loop();
 }
 , 1000 / Time.FPS)

@@ -92,6 +92,7 @@ function Head()
                 this.velocityy = 0;
                 this.velocityx = this.width;
             }
+            
             this.wasPosx = this.positionx;
             this.wasPosy = this.positiony;
             this.positionx += this.velocityx;
@@ -104,7 +105,7 @@ function Head()
 
     head.Draw = function ()
     {
-        DrawFillRect(this.positionx, this.positiony, this.height, this.width, "blue")
+        DrawFillRect(head.positionx, head.positiony, this.height, this.width, "blue")
     }
     return head;
 }
@@ -117,49 +118,69 @@ function Body()
     var body = new GameObject();
     body.tag = "body";
     body.snakePart = snakeBodyPos;
-    body.wasPosx = 0,
-   body.wasPosy = 0,
+    body.height = 32,
+    body.width = 32,
+    body.wasPosx = 32,
+   body.wasPosy = 32,
+    body.positionx = objects[objects.length-1].wasPosx,
+    body.positiony = objects[objects.length-1].wasPosy,
     snakeBodyPos++;
     // AddToArray(body);
-    objects.push(this);
-    Update = function ()
+   // objects.push(this);
+    body.Update = function ()
     {
+        
         if (tick)
         {
             this.wasPosx = this.positionx;
             this.wasPosy = this.positiony;
-            this.positionx = objects[snakeBodyPos - 1].positionx;
-            this.positiony = objects[snakeBodyPos - 1].positiony;
+        
+        
+            this.positionx = objects[this.snakePart - 1].wasPosx;
+            this.positiony = objects[this.snakePart - 1].wasPosy;
         }
     }
 
-    Draw = function()
+    body.Draw = function()
     {
-        DrawFillRect(this.positionx, this.positiony, this.height, this.width, "blue")
+        DrawFillRect(body.positionx, body.positiony, body.height, body.width, "blue")
     }
     return body;
 }
+
+function NewBody()
+{
 body = new Body();
+objects.push(body);
+}
 
 function Fruit()
 {
     fruit = new GameObject()
-    fruit.positionx = SnapToGridx(GetRandomInt(0, Room.width), 32)
-    fruit.positiony = SnapToGridy(GetRandomInt(0, Room.height), 32);
+    fruit.positionx = (GetRandomInt(0, 20)) * 32;
+    fruit.positiony = (GetRandomInt(0, 20)) * 32;
     fruit.image = Images.cherry;
 
-    Update = function ()
+    fruit.Update = function ()
     {
-        if (this.posistionx == head.positionx && this.posistiony == head.positiony)
+        if (this.positionx == head.positionx && this.positiony == head.positiony)
         {
-            fruit.positionx = SnapToGridx(GetRandomInt(0, Room.width), 32)
-            fruit.positiony = SnapToGridy(GetRandomInt(0, Room.height), 32);
+            fruit.positionx = (GetRandomInt(0, 20)) * 32;
+            fruit.positiony = (GetRandomInt(0, 20)) * 32;
             score += 1;
-            head.addbody();
+            NewBody();
         }
     }
+
+    fruit.Draw = function()
+    {
+        DrawFillRect(this.positionx,this.positiony,32,32,"red")
+        //CONTEXT.drawImage(cherry.src,fruit.positionx,fruit.positiony)
+    }
+    return fruit
 }
 
+fruit = new Fruit();
 function AddToArray(object)
 {
     for (var i = 0; i < realLength; i++)

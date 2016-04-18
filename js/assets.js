@@ -2,22 +2,26 @@
 var CONTEXT = CANVAS.getContext("2d");
 var snakeBodyPos = 0;
 var tick = false;
+var pretick = false;
 var tickSpeed = 0.5;
 var tickTimer = 0.0;
 var score = 0;
 var realLength = 0;
+var tailEndx = 0;
+var tailEndy = 0;
+
 function SnapToGridx(x, gridWidth)
 {
-    (x / gridWidth) * gridWidth;
+    var newx = (x / gridWidth) * gridWidth;
     
-    return x
+    return newx
 }
 
 function SnapToGridy(y, gridHeight)
 {
-    (y / gridHeight) * gridHeight;
+   var newy = (y / gridHeight) * gridHeight;
 
-    return y
+    return newy
 }
 
 var Time = {
@@ -169,6 +173,11 @@ window.onkeydown = function (e)
     else if(code == 39)
     { //down key
         Input.keyboard_right = true;
+    }
+
+    else if (code == 32)
+    { //down key
+        NewBody();
     }
 };
 
