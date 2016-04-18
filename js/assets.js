@@ -4,6 +4,21 @@ var snakeBodyPos = 0;
 var tick = false;
 var tickSpeed = 0.5;
 var tickTimer = 0.0;
+var score = 0;
+var realLength = 0;
+function SnapToGridx(x, gridWidth)
+{
+    (x / gridWidth) * gridWidth;
+    
+    return x
+}
+
+function SnapToGridy(y, gridHeight)
+{
+    (y / gridHeight) * gridHeight;
+
+    return y
+}
 
 var Time = {
     lastUpdate: 0,
@@ -34,6 +49,7 @@ var Input = {
 var Images = {
     startButton: new Image(),
     icon: new Image(),
+    cherry: new Image(),
     optionsButton: new Image(),
     mysteryButtton: new Image(),
 }; // image pointers
@@ -48,6 +64,8 @@ var Images = {
     Images.optionsButton.myx = Room.width / 2;
     Images.optionsButton.myy = 300;
 
+    Images.cherry.src = 'images/cherry.png'
+
     Images.mysteryButtton.src = 'images/Noice_Button.png';
     Images.mysteryButtton.myx = Room.width / 2;
     Images.mysteryButtton.myy = 450;
@@ -59,6 +77,11 @@ function GetDealtaTime()
     Time.deltaTime = Time.now - Time.lastUpdate;
     Time.lastUpdate = Time.now;
     Time.deltaTime /= 1000;
+}
+
+function GetRandomInt(min, max)
+{
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function InRect(x, y, box_x, box_y, box_w, box_h)

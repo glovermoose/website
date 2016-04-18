@@ -51,8 +51,13 @@ function GameLoop()
     DrawFillRect(0, 0, Room.width, Room.height, "white")
 
   
+    for (var i = 0; i < objects.length; i++)
+    {
+        //  objects[i].Update();
         head.Update();
+        //objects[i].Draw();
         head.Draw();
+    }
 
     tick = false;
 }
