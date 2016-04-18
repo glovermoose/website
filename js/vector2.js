@@ -9,6 +9,12 @@ Copyright (c) 2016 Emmanuel Vaccaro
 animations
 ===============================================*/
 
+
+var Vector2// Sets a vector to (0,0)
+{
+    zero = new Vector2(0,0);
+}
+
 function Vector2(x, y)
 {
     if (x == undefined) { x = 0; }

@@ -1,5 +1,9 @@
 ﻿var CANVAS = document.getElementById("myCanvas");
 var CONTEXT = CANVAS.getContext("2d");
+var snakeBodyPos = 0;
+var tick = false;
+var tickSpeed = 0.5;
+var tickTimer = 0.0;
 
 var Time = {
     lastUpdate: 0,
@@ -27,8 +31,6 @@ var Input = {
     keybaord_space: false,
 }; // Input variables
 
-
-
 var Images = {
     startButton: new Image(),
     icon: new Image(),
@@ -37,10 +39,10 @@ var Images = {
 }; // image pointers
 {
     Images.startButton.src = 'images/Start_Button.png';
-    Images.startButton.myx = Room.width / 2;
-    Images.startButton.myy = 150;
+    Images.startButton.myx = Room.width / 2 - 207/2 ;
+    Images.startButton.myy = 150 - Images.startButton.height / 2;
 
-   // Images.igon.src = 'images/ICON.png';
+    // Images.igon.src = 'images/ICON.png';
 
     Images.optionsButton.src = 'images/Options_Button.png';
     Images.optionsButton.myx = Room.width / 2;
@@ -59,23 +61,15 @@ function GetDealtaTime()
     Time.deltaTime /= 1000;
 }
 
-/*
- * returns true or false if position is within rectangle
- * position: position ( Vector2 );
- * box_x1: left x ( int );
- * box_y1: top y ( int );
- * box_x2: right x ( int );
- * box_y2: bottom y ( int );
- *///explanation
-function InRect(x, y, box_x1, box_y1, box_x2, box_y2)
+function InRect(x, y, box_x, box_y, box_w, box_h)
 {
-    if (x > box_x1)
+    if (x > box_x)
     {
-        if (y > box_y1)
+        if (y > box_y)
         {
-            if (x < box_x2)
+            if (x < box_x + box_w)
             {
-                if (y < box_y2)
+                if (y < box_y + box_h)
                 {
                     return true;
                 }
@@ -84,6 +78,23 @@ function InRect(x, y, box_x1, box_y1, box_x2, box_y2)
     }
     return false;
 }// returns true or false if position is within rectangle
+
+function DrawFillRect(x, y, height, width, string_color)
+{
+    CONTEXT.beginPath();
+    CONTEXT.fillStyle = string_color;
+    CONTEXT.fillRect(x, y, width, height);
+    CONTEXT.fill();
+    CONTEXT.closePath();
+}
+
+function DrawRect(x, y, height, width)
+{
+    CONTEXT.beginPath();
+    CONTEXT.rect(x, y, width, height);
+    CONTEXT.stroke();
+    CONTEXT.closePath();
+}
 
 $(CANVAS).mousemove(function (e)
 {
@@ -114,33 +125,53 @@ $(CANVAS).mouseup(function (event)
     }
 });
 
-$(CANVAS).keydown(function (event)
+window.onkeydown = function (e)
 {
-    if (event.keyCode == 37)
-    {
-        Input.keyboard_left = true;
-    }
-
-    if (event.keyCode == 39)
-    {
-        Input.keyboard_right = true;
-    }
-
-    if (event.keyCode == 38)
-    {
+    var code = e.keyCode ? e.keyCode : e.which;
+    if (code == 38)
+    { //up key
         Input.keyboard_up = true;
     }
 
-    if (event.keyCode == 40)
-    {
+   else if (code == 40)
+    { //down key
         Input.keyboard_down = true;
     }
 
-    if (event.keyCode == 32)
-    {
-        Input.keyboard_space = true;
+    else if(code == 37)
+    { //up key
+        Input.keyboard_left = true;
     }
-});
+
+    else if(code == 39)
+    { //down key
+        Input.keyboard_right = true;
+    }
+};
+
+window.onkeyup = function (e)
+{
+    var code = e.keyCode ? e.keyCode : e.which;
+    if (code == 38)
+    { //up key
+        Input.keyboard_up = false;
+    }
+
+    if (code == 40)
+    { //down key
+        Input.keyboard_down = false;
+    }
+
+    if (code == 37)
+    { //up key
+        Input.keyboard_left = false;
+    }
+
+    if (code == 39)
+    { //down key
+        Input.keyboard_right = false;
+    }
+};
 
 $(CANVAS).keyup(function (event)
 {
