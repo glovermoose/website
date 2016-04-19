@@ -150,10 +150,7 @@ function Body()
     // objects.push(this);
     body.Update = function ()
     {
-        if (this.positionx == head.positionx && this.positiony == head.positiony)
-        {
-            location.reload();
-        }
+
         if (tick)
         {
             this.wasPosx = this.positionx;
@@ -162,6 +159,10 @@ function Body()
 
             this.positionx = objects[this.snakePart - 1].wasPosx;
             this.positiony = objects[this.snakePart - 1].wasPosy;
+            if (this.positionx == head.positionx && this.positiony == head.positiony)
+            {
+                location.reload();
+            }
         }
     }
 
@@ -199,7 +200,7 @@ function Fruit()
 
     fruit.Draw = function ()
     {
-     //   DrawFillRect(this.positionx, this.positiony, 32, 32, "red")
+        //   DrawFillRect(this.positionx, this.positiony, 32, 32, "red")
         CONTEXT.drawImage(fruit.image, fruit.positionx, fruit.positiony);
         //CONTEXT.drawImage(cherry.src,fruit.positionx,fruit.positiony)
     }
