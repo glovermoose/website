@@ -8,37 +8,6 @@ Copyright (c) 2016 Daniel Welsh
 @brief: The main.js
 ===============================================*/
 
-
-
-//$(CANVAS).keydown(function (event)
-//{
-//    if (event.which = 37)
-//    {
-//        Input.keyboard_left = true;
-//    }
-
-//    if (event.which == 39)
-//    {
-//        Input.keyboard_right = true;
-//    }
-
-//    if (event.which == 38)
-//    {
-//        Input.keyboard_up = true;
-//    }
-
-//    if (event.which == 40)
-//    {
-//        Input.keyboard_down = true;
-//    }
-
-//    if (event.which == 32)
-//    {
-//        Input.keyboard_space = true;
-//    }
-//});
-
-
 var loop = function () { }; /// create deligate to swap between menu loop and game loop depending on clicks
 function GameLoop()
 {
@@ -48,7 +17,7 @@ function GameLoop()
         tickTimer = 0;
         tick = true;
     }
-    DrawFillRect(0, 0, Room.width, Room.height, "white")
+    DrawFillRect(0, 0, Room.width, Room.height, "rgb(183, 224, 158)")
 
 
     for (var i = 0; i < objects.length; i++)
@@ -92,10 +61,7 @@ loop = function ()
         }
     }
     ///////
-    CONTEXT.beginPath();
-    CONTEXT.rect(Images.startButton.myx, Images.startButton.myy, Images.startButton.width, Images.startButton.height);
-    CONTEXT.stroke();
-    CONTEXT.closePath();
+
     ///////
 }
 

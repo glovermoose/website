@@ -126,7 +126,7 @@ function Head()
 
     head.Draw = function ()
     {
-        DrawFillRect(head.positionx, head.positiony, this.height, this.width, "blue")
+        DrawFillRect(head.positionx, head.positiony, this.height, this.width, "rgb(75, 73, 74)")
     }
     return head;
 }
@@ -150,7 +150,10 @@ function Body()
     // objects.push(this);
     body.Update = function ()
     {
-
+        if (this.positionx == head.positionx && this.positiony == head.positiony)
+        {
+            location.reload();
+        }
         if (tick)
         {
             this.wasPosx = this.positionx;
@@ -164,7 +167,7 @@ function Body()
 
     body.Draw = function ()
     {
-        DrawFillRect(body.positionx, body.positiony, body.height, body.width, "blue")
+        DrawFillRect(body.positionx, body.positiony, body.height, body.width, "rgb(75, 73, 74)")
     }
     return body;
 }
@@ -189,14 +192,15 @@ function Fruit()
             fruit.positionx = (GetRandomInt(0, 19)) * 32;
             fruit.positiony = (GetRandomInt(0, 19)) * 32;
             score += 1;
-            tickSpeed -= 0.02;
+            tickSpeed -= 0.002;
             NewBody();
         }
     }
 
     fruit.Draw = function ()
     {
-        DrawFillRect(this.positionx, this.positiony, 32, 32, "red")
+     //   DrawFillRect(this.positionx, this.positiony, 32, 32, "red")
+        CONTEXT.drawImage(fruit.image, fruit.positionx, fruit.positiony);
         //CONTEXT.drawImage(cherry.src,fruit.positionx,fruit.positiony)
     }
     return fruit
