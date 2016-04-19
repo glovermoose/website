@@ -102,10 +102,8 @@ loop = function ()
 setInterval(function ()
 {
     GetDealtaTime();
-    document.getElementById("left").innerHTML = "x: " + head.positionx;
-    document.getElementById("down").innerHTML = "y: " + head.positiony;
-    document.getElementById("up").innerHTML = "fruit.x: " + fruit.positionx;
-    document.getElementById("right").innerHTML = "right: " + fruit.positiony;
+    document.getElementById("left").innerHTML = "score: " + score;
+
     loop();
 }
 , 1000 / Time.FPS)
