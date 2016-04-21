@@ -58,19 +58,19 @@ var Images = {
     mysteryButtton: new Image(),
 }; // image pointers
 {
-    Images.startButton.src = 'images/Start_Button.png';
+    Images.startButton.src = 'snake/images/Start_Button.png';
     Images.startButton.myx = Room.width / 2 - 207/2 ;
     Images.startButton.myy = 150 - Images.startButton.height / 2;
 
     // Images.igon.src = 'images/ICON.png';
 
-    Images.optionsButton.src = 'images/Options_Button.png';
+    Images.optionsButton.src = 'snake/images/Options_Button.png';
     Images.optionsButton.myx = Room.width / 2;
     Images.optionsButton.myy = 300;
 
-    Images.cherry.src = 'images/cherry.png'
+    Images.cherry.src = 'snake/images/cherry.png'
 
-    Images.mysteryButtton.src = 'images/Noice_Button.png';
+    Images.mysteryButtton.src = 'snake/images/Noice_Button.png';
     Images.mysteryButtton.myx = Room.width / 2;
     Images.mysteryButtton.myy = 450;
 } // image sources
