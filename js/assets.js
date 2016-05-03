@@ -1,8 +1,8 @@
 var deltaTime =0;
 var lastTime=0;
 
-var room_width =512;
-var room_height = 512;
+var room_width =640;
+var room_height = 640;
 
 var gameObjects = [];
 
@@ -18,7 +18,6 @@ window.onkeydown = function(e) {
 
    if (key == 39) {
        right = true;
-       //alert(right);
    }else if (key == 37) {
        left = true;
    }
@@ -30,7 +29,6 @@ window.onkeyup = function(e) {
 
    if (key == 39) {
        right = false;
-       //alert(right);
    }else if (key == 37) {
        left = false;
    }
@@ -40,7 +38,7 @@ window.onkeyup = function(e) {
 function GetDeltaTime()
 {
 	var now = Date.now();
-deltaTime = now - lastTime;
+deltaTime = (now - lastTime)/1000;
 lastTime = now; 
 }
 
