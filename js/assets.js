@@ -1,6 +1,9 @@
 var deltaTime =0;
 var lastTime=0;
 
+var destroyedBlocks = 0;
+var speed = 3;
+
 var room_width =640;
 var room_height = 640;
 
@@ -23,6 +26,10 @@ window.onkeydown = function(e) {
    }
 }
 
+function invertSign(v)
+{
+    return v;
+}
 
 window.onkeyup = function(e) {
    var key = e.keyCode ? e.keyCode : e.which;
