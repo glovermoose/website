@@ -1,0 +1,46 @@
+﻿body {
+    background-image: url("images/bigstock-Biting-snake-70053766.jpg");
+    background-size: 100%;
+}
+
+h1 {
+
+	text-shadow: 0px 0px 17px rgba(255, 0, 0, 0.8);
+	color: #FFFFFF;
+	font-size: 150px;
+
+}
+ p{
+color: #FFFFFF;
+ }
+#snakeButton {
+   border-top: 1px solid #000000;
+   background: #d2d665;
+   background: -webkit-gradient(linear, left top, left bottom, from(#9c3e3e), to(#d2d665));
+   background: -webkit-linear-gradient(top, #9c3e3e, #d2d665);
+   background: -moz-linear-gradient(top, #9c3e3e, #d2d665);
+   background: -ms-linear-gradient(top, #9c3e3e, #d2d665);
+   background: -o-linear-gradient(top, #9c3e3e, #d2d665);
+   padding: 20px 40px;
+   -webkit-border-radius: 40px;
+   -moz-border-radius: 40px;
+   border-radius: 40px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 24px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+#snakeButton:hover {
+   border-top-color: #000000;
+   background: #000000;
+   color: #ff00ff;
+   }
+#snakeButton:active {
+   border-top-color: #004d80;
+   background: #004d80;
+   }
