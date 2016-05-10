@@ -1,0 +1,1 @@
+earth = new Earth();

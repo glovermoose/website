@@ -1,4 +1,4 @@
-﻿/*=============================================
+/*=============================================
 -----------------------------------
 Copyright (c) 2016 Emmanuel Vaccaro
 -----------------------------------
@@ -8,12 +8,6 @@ Copyright (c) 2016 Emmanuel Vaccaro
 @brief: A Vector2 math library for making 2D
 animations
 ===============================================*/
-
-
-var Vector2// Sets a vector to (0,0)
-{
-    zero = new Vector2(0,0);
-}
 
 function Vector2(x, y)
 {
@@ -85,4 +79,25 @@ Vector2.Multiply = function (vectorA, vectorB)
 Vector2.ToAngle = function (direction)
 {
     return Math.atan2(direction.y, direction.x);
+}
+
+AngleToRadians = function(angle)
+{
+    return angle * Math.PI / 180;
+}
+
+function RadianToVector2(radian)
+{
+return [Math.cos(radian),Math.sin(radian)];
+}
+
+AngleToVector = function(angle)
+{
+    return RadianToVector2(AngleToRadians(angle));
+}
+
+VectorsToAngle = function(x1,y1,x2,y2)
+{
+// todo vecors to angle
+    return Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
 }
