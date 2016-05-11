@@ -122,6 +122,7 @@ function Alien()
         if (this.word == "")
         {
             //gameObjects.splice(this.arraypos, 0);
+            gameObjects[0].target = -1;
             gameObjects[this.arraypos] = new GameObject(); // temp fix DO NOT KEEP
         }
         //move towards earth 
