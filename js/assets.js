@@ -35,7 +35,38 @@ window.onkeydown = function (e)
     keydown = true;
     myKeyPress(e);
 }
+function drawCircle(x,y,r)
+{
+    CONTEXT.beginPath();
+    CONTEXT.strokeStyle = "red";
+    CONTEXT.arc(x, y, r, 0, 2 * Math.PI);
+    CONTEXT.stroke();
+}
+function drawLine(x1,y1,x2,y2)
+{
+    CONTEXT.beginPath();
+    CONTEXT.strokeStyle = "red";
+    CONTEXT.lineWidth = 6;
+    CONTEXT.moveTo(x1, y1);
+    CONTEXT.lineTo(x2, y2);
+    CONTEXT.stroke();
 
+    CONTEXT.beginPath();
+    CONTEXT.strokeStyle = "yellow";
+    CONTEXT.lineWidth = 3;
+    CONTEXT.moveTo(x1, y1);
+    CONTEXT.lineTo(x2, y2);
+    CONTEXT.stroke();
+    
+    CONTEXT.beginPath();
+    CONTEXT.strokeStyle = "blue";
+    CONTEXT.lineWidth = 1;
+    CONTEXT.moveTo(x1, y1);
+    CONTEXT.lineTo(x2, y2);
+    CONTEXT.stroke();
+    //CONTEXT.closePath();
+    CONTEXT.lineWidth = 1;
+}
 
 window.onkeyup = function (e)
 {
@@ -73,6 +104,10 @@ function GetDeltaTime()
     lastTime = now;
 }
 
+function getDistance(x1,y1,x2,y2)
+{
+    return Math.abs(Math.abs(x1) - Math.abs(x2)) + Math.abs(Math.abs(y1) - Math.abs(y2));
+}
 
 function getRandomInt(a, b)
 {

@@ -3,11 +3,11 @@ function gameloop()
 {
 GetDeltaTime();
 
+CONTEXT.fillStyle = 'black';
+CONTEXT.fillRect(0,0,CANVAS.clientWidth,CANVAS.clientHeight);
 for (var i = 0; i < gameObjects.length; i++) {
 	gameObjects[i].Update();
 }
-CONTEXT.fillStyle = 'black';
-CONTEXT.fillRect(0,0,CANVAS.clientWidth,CANVAS.clientHeight);
 for (var i = 0; i < gameObjects.length; i++) {
 	gameObjects[i].Draw();
 }
