@@ -40,21 +40,11 @@ function Earth()
             this.toSpawn -= this.toSpawn > 1 ? 0.05 : 0;
         }
         //alert(deltaTime);
-
-        for (var i = 0; i < gameObjects.length; i++)
-        {
-            if (gameObjects[i].tag == "alien")
-                if (getDistance(this.x, this.y, gameObjects[i].x, gameObjects[i].y) < this.width + gameObjects[i].width)
-                {
-                    this.shields -= 1;
-                    gameObjects[i] = new GameObject(); // delete this line!!!!!
-                }
-        }
-
         if (currentKey != "")
         {
             if (this.target == -1)
             {
+
                 for (var i = 0; i < gameObjects.length; i++)
                 {
                     if (gameObjects[i].tag == "alien")
@@ -63,24 +53,16 @@ function Earth()
                             this.target = i;
                             gameObjects[i].DeleteStringIndex();
                             log(i);
-                            drawLine(this.x, this.y, gameObjects[i].x, gameObjects[i].y);
                             break;
                         }
                 }
             }
             else
             {
-                
                 if (gameObjects[this.target].ReturnfirstLetterUpper() == currentKey)
                 {
-                    if (gameObjects[this.target].tag == "alien")
-                    {
-                    drawLine(this.x, this.y, gameObjects[this.target].x, gameObjects[this.target].y);
                     gameObjects[this.target].DeleteStringIndex();
-                    }
-
                 }
-                drawCircle(gameObjects[this.target].x, gameObjects[this.target].y, gameObjects[this.target].width + 5);
             }
         }
     }
@@ -117,7 +99,7 @@ function Alien()
     alien.x = getRandomInt(0, 800);
     alien.y = getRandomInt(0, 800);
     alien.velocityX = 0;
-    alien.arraypos = gameObjects.length;
+    alien.arraypos = gameObjects.length ;
     alien.width = 8;
     alien.velocityY = 0;
     alien.tag = "alien"
